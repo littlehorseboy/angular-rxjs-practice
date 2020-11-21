@@ -14,7 +14,7 @@ export class RxObservableBasicPracticeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const observable = new Observable((subscriber) => {
+    const observable: Observable<number> = new Observable((subscriber) => {
       subscriber.next(1);
       subscriber.next(2);
       subscriber.next(3);
@@ -24,29 +24,23 @@ export class RxObservableBasicPracticeComponent implements OnInit {
       }, 1000);
     });
 
-    console.log('just before subscribe');
+    this.addLog('just before subscribe');
 
     observable.subscribe({
-      next: (x) => {
-        this.logs = [
-          ...this.logs,
-          `got value ${x}`,
-        ];
-       },
-      error: (error) => {
-        this.logs = [
-          ...this.logs,
-          `something wrong occurred ${error}`,
-        ];
-      },
-      complete: () => {
-        this.logs = [
-          ...this.logs,
-          'done',
-        ];
-      },
+      next: (value) => this.addLog(`got value ${value}`),
+      error: (error) => this.addLog(`something wrong occurred ${error}`),
+      complete: () => this.addLog('done'),
     });
 
+    this.addLog('just after subscribe');
+
+  }
+
+  addLog(str: string): void {
+    this.logs = [
+      ...this.logs,
+      str,
+    ];
   }
 
 }
