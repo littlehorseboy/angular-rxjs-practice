@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-rxjs-practice"
+    }
+  },
+  "defaultProject": "angular-rxjs-practice",
+  "cli": {
+    "analytics": false
+  }
 }
