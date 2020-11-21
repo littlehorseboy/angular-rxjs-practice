@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RxObservableBasicPracticeModule } from './rx-observable-basic-practice/rx-observable-basic-practice.module';
 import { RxObservableBasicPracticeTwoModule } from './rx-observable-basic-practice-two/rx-observable-basic-practice-two.module';
+import { RxFromModule } from './rx-from/rx-from.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RxObservableBasicPracticeTwoModule } from './rx-observable-basic-practi
     BrowserModule,
     AppRoutingModule,
     RxObservableBasicPracticeModule,
-    RxObservableBasicPracticeTwoModule
+    RxObservableBasicPracticeTwoModule,
+    RxFromModule
   ],
   providers: [],
   bootstrap: [AppComponent]
