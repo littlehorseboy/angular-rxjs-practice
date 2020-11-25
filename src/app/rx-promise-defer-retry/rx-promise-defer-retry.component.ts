@@ -3,11 +3,11 @@ import { defer, of, throwError } from 'rxjs';
 import { mergeMap, retry } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-rx-subject',
-  templateUrl: './rx-subject.component.html',
-  styleUrls: ['./rx-subject.component.scss']
+  selector: 'app-rx-promise-defer-retry',
+  templateUrl: './rx-promise-defer-retry.component.html',
+  styleUrls: ['./rx-promise-defer-retry.component.scss']
 })
-export class RxSubjectComponent implements OnInit {
+export class RxPromiseDeferRetryComponent implements OnInit {
 
   public logs: string[] = [];
 
@@ -31,7 +31,7 @@ export class RxSubjectComponent implements OnInit {
       retry(4),
     ).subscribe({
       next: (n) => {
-        this.addLog(n.toString());
+        this.addLog(`next: ${n}`);
       },
       error: (error) => {
         this.addLog(error.toString());
@@ -42,6 +42,7 @@ export class RxSubjectComponent implements OnInit {
 
   public getId(): Promise<number> {
     return new Promise((resolve) => {
+      this.addLog(this.callbackCount.toString());
       setTimeout(() => {
         this.callbackCount += 1;
         resolve(this.callbackCount);

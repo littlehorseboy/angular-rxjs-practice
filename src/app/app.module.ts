@@ -8,6 +8,7 @@ import { RxObservableBasicPracticeTwoModule } from './rx-observable-basic-practi
 import { RxFromModule } from './rx-from/rx-from.module';
 import { RxOperatorsModule } from './rx-operators/rx-operators.module';
 import { RxSubjectModule } from './rx-subject/rx-subject.module';
+import { RxPromiseDeferRetryModule } from './rx-promise-defer-retry/rx-promise-defer-retry.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RxSubjectModule } from './rx-subject/rx-subject.module';
     RxObservableBasicPracticeTwoModule,
     RxFromModule,
     RxOperatorsModule,
-    RxSubjectModule
+    RxSubjectModule,
+    RxPromiseDeferRetryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
