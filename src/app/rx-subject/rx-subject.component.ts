@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { defer, of, throwError } from 'rxjs';
-import { mergeMap, retry } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-rx-subject',
@@ -17,36 +16,19 @@ export class RxSubjectComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const deferPromise = defer(() => this.getId());
+    const subject = new Subject<number>();
 
-    // const observable: Observable<number> = from(this.getId());
-
-    deferPromise.pipe(
-      mergeMap((n) => {
-        if (n < 5) {
-          return throwError('error');
-        }
-        return of(n);
-      }),
-      retry(4),
-    ).subscribe({
-      next: (n) => {
-        this.addLog(n.toString());
-      },
-      error: (error) => {
-        this.addLog(error.toString());
-      },
+    subject.subscribe({
+      next: (n) => this.addLog(`observerA: ${n}`),
     });
 
-  }
-
-  public getId(): Promise<number> {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        this.callbackCount += 1;
-        resolve(this.callbackCount);
-      }, 1000);
+    subject.subscribe({
+      next: (n) => this.addLog(`observerB: ${n}`),
     });
+
+    subject.next(1);
+    subject.next(2);
+
   }
 
   public addLog(str: string): void {
