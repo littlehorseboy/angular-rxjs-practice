@@ -9,6 +9,7 @@ import { RxFromModule } from './rx-from/rx-from.module';
 import { RxOperatorsModule } from './rx-operators/rx-operators.module';
 import { RxSubjectModule } from './rx-subject/rx-subject.module';
 import { RxPromiseDeferRetryModule } from './rx-promise-defer-retry/rx-promise-defer-retry.module';
+import { RxSubjectFromModule } from './rx-subject-from/rx-subject-from.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RxPromiseDeferRetryModule } from './rx-promise-defer-retry/rx-promise-d
     RxFromModule,
     RxOperatorsModule,
     RxSubjectModule,
-    RxPromiseDeferRetryModule
+    RxPromiseDeferRetryModule,
+    RxSubjectFromModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { from, Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-rx-subject',
-  templateUrl: './rx-subject.component.html',
-  styleUrls: ['./rx-subject.component.scss']
+  selector: 'app-rx-subject-from',
+  templateUrl: './rx-subject-from.component.html',
+  styleUrls: ['./rx-subject-from.component.scss']
 })
-export class RxSubjectComponent implements OnInit {
+export class RxSubjectFromComponent implements OnInit {
 
   public logs: string[] = [];
 
@@ -24,8 +24,9 @@ export class RxSubjectComponent implements OnInit {
       next: (n) => this.addLog(`observerB: ${n}`),
     });
 
-    subject.next(1);
-    subject.next(2);
+    const observable = from([1, 2]);
+
+    observable.subscribe(subject);
 
   }
 
