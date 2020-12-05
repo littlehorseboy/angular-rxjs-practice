@@ -19,8 +19,6 @@ export class RxPromiseDeferRetryComponent implements OnInit {
 
     const deferPromise = defer(() => this.getId());
 
-    // const observable: Observable<number> = from(this.getId());
-
     deferPromise.pipe(
       mergeMap((n) => {
         if (n < 5) {

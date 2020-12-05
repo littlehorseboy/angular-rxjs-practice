@@ -11,6 +11,7 @@ import { RxSubjectModule } from './rx-subject/rx-subject.module';
 import { RxPromiseDeferRetryModule } from './rx-promise-defer-retry/rx-promise-defer-retry.module';
 import { RxSubjectFromModule } from './rx-subject-from/rx-subject-from.module';
 import { RxSubjectMulticastModule } from './rx-subject-multicast/rx-subject-multicast.module';
+import { RxSubjectMulticastUnsubscribeModule } from './rx-subject-multicast-unsubscribe/rx-subject-multicast-unsubscribe.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RxSubjectMulticastModule } from './rx-subject-multicast/rx-subject-mult
     RxSubjectModule,
     RxPromiseDeferRetryModule,
     RxSubjectFromModule,
-    RxSubjectMulticastModule
+    RxSubjectMulticastModule,
+    RxSubjectMulticastUnsubscribeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

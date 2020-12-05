@@ -15,9 +15,9 @@ export class RxSubjectMulticastComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const source = from([1, 2, 3]);
+    const source = from([1, 2]);
 
-    const subject = new Subject();
+    const subject = new Subject<number>();
 
     const multicasted = source.pipe(
       multicast(subject),
@@ -26,6 +26,7 @@ export class RxSubjectMulticastComponent implements OnInit {
     multicasted.subscribe({
       next: (n) => this.addLog(`observerA: ${n}`),
     });
+
     multicasted.subscribe({
       next: (n) => this.addLog(`observerB: ${n}`),
     });
