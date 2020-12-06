@@ -12,10 +12,11 @@ import { RxPromiseDeferRetryModule } from './rx-promise-defer-retry/rx-promise-d
 import { RxSubjectFromModule } from './rx-subject-from/rx-subject-from.module';
 import { RxSubjectMulticastModule } from './rx-subject-multicast/rx-subject-multicast.module';
 import { RxSubjectMulticastUnsubscribeModule } from './rx-subject-multicast-unsubscribe/rx-subject-multicast-unsubscribe.module';
+import { RxSubjectMulticastRefCountModule } from './rx-subject-multicast-ref-count/rx-subject-multicast-ref-count.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +29,8 @@ import { RxSubjectMulticastUnsubscribeModule } from './rx-subject-multicast-unsu
     RxPromiseDeferRetryModule,
     RxSubjectFromModule,
     RxSubjectMulticastModule,
-    RxSubjectMulticastUnsubscribeModule
+    RxSubjectMulticastUnsubscribeModule,
+    RxSubjectMulticastRefCountModule
   ],
   providers: [],
   bootstrap: [AppComponent]

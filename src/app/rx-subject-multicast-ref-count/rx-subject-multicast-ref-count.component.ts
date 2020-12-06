@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnectableObservable, interval, Subject } from 'rxjs';
-import { multicast } from 'rxjs/operators';
+import { multicast, refCount } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-rx-subject-multicast-unsubscribe',
-  templateUrl: './rx-subject-multicast-unsubscribe.component.html',
-  styleUrls: ['./rx-subject-multicast-unsubscribe.component.scss']
+  selector: 'app-rx-subject-multicast-ref-count',
+  templateUrl: './rx-subject-multicast-ref-count.component.html',
+  styleUrls: ['./rx-subject-multicast-ref-count.component.scss']
 })
-export class RxSubjectMulticastUnsubscribeComponent implements OnInit {
+export class RxSubjectMulticastRefCountComponent implements OnInit {
 
   public logs: string[] = [];
 
@@ -19,25 +19,24 @@ export class RxSubjectMulticastUnsubscribeComponent implements OnInit {
 
     const subject = new Subject<number>();
 
-    const multicasted = source.pipe(
+    const refCounted = source.pipe(
       multicast(subject),
+      refCount(),
     ) as ConnectableObservable<number>;
 
     let subscription1;
     let subscription2;
-    let subscriptionConnect;
 
     this.addLog('observerA subscribed');
-    subscription1 = multicasted.subscribe({
-      next: (value) => this.addLog(`observerA: ${value}`),
-    });
 
-    subscriptionConnect = multicasted.connect();
+    subscription1 = refCounted.subscribe({
+      next: (n) => this.addLog(`observerA: ${n}`),
+    });
 
     setTimeout(() => {
       this.addLog('observerB subscribed');
-      subscription2 = multicasted.subscribe({
-        next: (value) => this.addLog(`observerB: ${value}`),
+      subscription2 = refCounted.subscribe({
+        next: (n) => this.addLog(`observerB: ${n}`),
       });
     }, 600);
 
@@ -49,7 +48,6 @@ export class RxSubjectMulticastUnsubscribeComponent implements OnInit {
     setTimeout(() => {
       this.addLog('observerB unsubscribed');
       subscription2.unsubscribe();
-      subscriptionConnect.unsubscribe();
     }, 2000);
 
   }
