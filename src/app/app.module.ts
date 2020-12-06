@@ -15,6 +15,7 @@ import { RxSubjectMulticastUnsubscribeModule } from './rx-subject-multicast-unsu
 import { RxSubjectMulticastRefCountModule } from './rx-subject-multicast-ref-count/rx-subject-multicast-ref-count.module';
 import { RxSubjectBehaviorSubjectModule } from './rx-subject-behavior-subject/rx-subject-behavior-subject.module';
 import { RxSubjectReplaySubjectModule } from './rx-subject-replay-subject/rx-subject-replay-subject.module';
+import { RxSubjectAsyncSubjectModule } from './rx-subject-async-subject/rx-subject-async-subject.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { RxSubjectReplaySubjectModule } from './rx-subject-replay-subject/rx-sub
     RxSubjectMulticastUnsubscribeModule,
     RxSubjectMulticastRefCountModule,
     RxSubjectBehaviorSubjectModule,
-    RxSubjectReplaySubjectModule
+    RxSubjectReplaySubjectModule,
+    RxSubjectAsyncSubjectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
